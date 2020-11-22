@@ -1,0 +1,18 @@
+$default-font: "Montserrat";
+$content-width: 1170px;
+$heightHeader: 80px;
+$heightFooter: 340px;
+$minHeightMain: calc(100vh - (#{$heightHeader} + #{$heightFooter}));
+$mainColor: #222222;
+$mainWeight: 400;
+$mainSize: 14px;
+:root {
+    --text: #333333;
+    --button-bg: #c79c59;
+    --header-element-hover: #c79c59;
+    --date-bg: rgba(199, 156, 89, 0.2);
+    --date: #8d7149;
+    --bg-site: #faf9f5;
+    --border: #ebe8e4;
+    --crumb: #6d7073;
+}
