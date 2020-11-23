@@ -69,6 +69,73 @@
           </div>
         </div>
       </div>
+      <div class="modal-sign modal-sign--registration modal">
+        <div class="modal__close">
+          <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path opacity=".8" d="M1 1l18 18m0-18l-18 18" stroke="#fff" stroke-width="2" />
+          </svg>
+        </div>
+        <form class="modal-sign__form modal__content box" method="POST" id="modal-registration">
+          <div class="modal-sign__head">
+            <label class="modal-sign__type" data-type="registration">
+              Регистрация
+              <input class="modal-sign__input" type="radio" />
+            </label>
+            <label class="modal-sign__type" data-type="in">
+              Вход
+              <input class="modal-sign__input" type="radio" />
+            </label>
+          </div>
+          <div class="modal-sign__body modal-sign__body--registration">
+            <div class="modal-sign__title">Фамилия</div>
+            <input class="modal-sign__body-input" type="text" placeholder="Иванов" required min="2" />
+            <div class="modal-sign__title">Имя</div>
+            <input class="modal-sign__body-input" type="text" placeholder="Иван" required min="2" />
+            <div class="modal-sign__title">Отчество</div>
+            <input class="modal-sign__body-input" type="text" placeholder="Иванович" required min="2" />
+            <div class="modal-sign__title">Почта</div>
+            <input class="modal-sign__body-input" type="email" placeholder="example@email.ru" required />
+            <div class="modal-sign__title">Введите пароль</div>
+            <input class="modal-sign__body-input" type="text" placeholder="Введите пароль" required min="6" />
+            <div class="modal-sign__title">Повторите пароль</div>
+            <input class="modal-sign__body-input" type="text" placeholder="Повторите пароль" required min="6" />
+            <button class="modal-sign__button button button--main">Зарегистрироваться</button>
+            <div class="modal-sign__text">
+              Нажимая кнопку «Зарегистрироваться», вы соглашаетесь с
+              <a class="modal-sign__link" href="#">условиями пользовательского соглашения</a>
+            </div>
+          </div>
+          <div class="modal-sign__body modal-sign__body--in">
+            <div class="modal-sign__title">Почта</div>
+            <input class="modal-sign__body-input" type="email" placeholder="example@email.ru" required />
+            <div class="modal-sign__title">Введите пароль</div>
+            <input class="modal-sign__body-input" type="text" placeholder="Введите пароль" required min="6" />
+            <button class="modal-sign__button button button--main">Войти</button>
+            <div class="modal-sign__text">
+              Забыли пароль?
+              <button class="modal-sign__link" data-type-sign="recovery">Восстановите его здесь</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-sign modal-sign--recovery modal">
+        <div class="modal__close">
+          <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path opacity=".8" d="M1 1l18 18m0-18l-18 18" stroke="#fff" stroke-width="2" />
+          </svg>
+        </div>
+        <form class="modal-sign__form modal__content box" method="POST" id="modal-recovery">
+          <div class="modal-sign__main-title">Восстановление пароля</div>
+          <div class="modal-sign__text">Введите почту, куда мы отправим вам ссылку на восстановление пароля</div>
+          <div class="modal-sign__title">Почта</div>
+          <input class="modal-sign__body-input" type="text" placeholder="example@email.ru" required />
+          <button class="modal-sign__button button button--main">Отправить</button>
+          <div class="modal-sign__text">
+            Вспомнили пароль?
+            <button class="modal-sign__link" data-type-sign="registration">Войдите здесь</button>
+          </div>
+        </form>
+      </div>
     </aside>
     <header class="header">
       <div class="header__container">
@@ -97,8 +164,8 @@
             <a class="menu__desktop-element" href="#">Трансляция</a>
           </div>
         </nav>
-        <button class="header__button header__button--first" href="#">Регистрация</button>
-        <button class="header__button header__button--white" href="#">Вход</button>
+        <button class="header__button header__button--first" data-type-sign="registration">Регистрация</button>
+        <button class="header__button header__button--white" data-type-sign="in">Вход</button>
       </div>
     </header>
     <main class="land">
@@ -122,8 +189,8 @@
           <div class="head__title title">Торжественная церемония награждения победителей конкурса «Золотые Имена Высшей Школы»</div>
           <div class="head__text">II Национальная научно-практическая конференция «Стратегические ориентиры развития высшего образования»</div>
           <div class="head__buttons">
-            <button class="head__button button button--main">Зарегистрироваться</button>
-            <button class="head__button button button--white">Войти</button>
+            <button class="head__button button button--main" data-type-sign="registration">Зарегистрироваться</button>
+            <button class="head__button button button--white" data-type-sign="in">Войти</button>
           </div>
         </div>
       </section>
@@ -222,6 +289,12 @@
           </div>
           <div class="program__cards">
             <div class="program__card">
+              <div class="program__card-close">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 17L17 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                  <path d="M17 17L2 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </div>
               <div class="program__card-note">
                 <div class="program__card-note-close">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -384,6 +457,12 @@
               </div>
             </div>
             <div class="program__card">
+              <div class="program__card-close">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 17L17 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                  <path d="M17 17L2 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </div>
               <div class="program__card-note">
                 <div class="program__card-note-close">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -510,6 +589,12 @@
               </div>
             </div>
             <div class="program__card">
+              <div class="program__card-close">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 17L17 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                  <path d="M17 17L2 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </div>
               <div class="program__card-note">
                 <div class="program__card-note-close">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -671,6 +756,12 @@
               </div>
             </div>
             <div class="program__card">
+              <div class="program__card-close">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 17L17 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                  <path d="M17 17L2 1.99997" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </div>
               <div class="program__card-note">
                 <div class="program__card-note-close">
                   <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -6,7 +6,8 @@ body {
     padding-top: $heightHeader;
     overflow-x: hidden;
     a,
-    button {
+    button,
+    label {
         color: $mainColor;
         font-weight: $mainWeight;
         font-size: $mainSize;
@@ -181,13 +182,13 @@ main {
     width: 1010px;
     opacity: 0;
     visibility: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.12);
+    border-radius: 20px;
     backface-visibility: hidden;
     transform: scale(1.2);
     transition: all 0.6s cubic-bezier(0.55, 0, 0.1, 1);
     &__concept {
         padding: 40px 48px;
-        border-radius: 20px;
         @media (max-width: 900px) {
             padding: 40px 32px;
         }
@@ -203,6 +204,102 @@ main {
             line-height: 26px;
             margin: 20px 0;
             font-family: "Open Sans", sans-serif;
+        }
+    }
+    &-sign {
+        width: 460px;
+        padding: 30px;
+        &__head {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        &__type {
+            color: var(--not-active-element);
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 120%;
+            padding-bottom: 12px;
+            cursor: pointer;
+            &:first-child {
+                margin-right: 25px;
+            }
+            &:hover {
+                color: $mainColor;
+            }
+            &--active {
+                border-bottom: 3px solid var(--button-bg);
+                color: $mainColor;
+            }
+        }
+
+        &__main-title {
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 120%;
+            margin-bottom: 12px;
+        }
+        &__input {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            left: 0;
+        }
+        &__body {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+            display: none;
+            &--active {
+                opacity: 1;
+                pointer-events: auto;
+                height: 100%;
+                overflow: visible;
+                display: block;
+            }
+            &-input {
+                background: #f5f4f2;
+                border-radius: 5px;
+                height: 50px;
+                padding: 15px;
+                line-height: 20px;
+                font-family: "Open Sans", sans-serif;
+                color: var(--text);
+                width: 100%;
+                &::placeholder {
+                    opacity: 0.5;
+                    color: #333333;
+                    font-family: "Open Sans", sans-serif;
+                    font-style: normal;
+                    font-weight: normal;
+                    color: var(--text);
+                    line-height: 20px;
+                }
+            }
+        }
+        &__title {
+            font-weight: 600;
+            line-height: 25px;
+            margin: 20px 0 5px;
+            &:first-child {
+                margin: 0 0 5px;
+            }
+        }
+        &__button {
+            margin: 20px 0;
+            width: 100%;
+        }
+        &__text {
+            font-family: "Open Sans";
+            line-height: 20px;
+        }
+        &__link {
+            color: var(--button-bg);
+            cursor: pointer;
+            display: inline-block;
+            &:hover {
+                opacity: 0.7;
+            }
         }
     }
     &--active {
@@ -302,6 +399,27 @@ main {
         @media (max-width: 500px) {
             padding: 20px;
         }
+        &-close {
+            top: 24px;
+            right: 35px;
+            position: absolute;
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            &--open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            svg path {
+                transition: 0.3s;
+            }
+            &:hover {
+                svg path {
+                    stroke: #828282;
+                }
+            }
+        }
         &-note {
             position: absolute;
             width: 100%;
@@ -315,7 +433,6 @@ main {
             opacity: 0;
             pointer-events: none;
             transition: 0.3s;
-
             &--active {
                 opacity: 1;
                 pointer-events: auto;

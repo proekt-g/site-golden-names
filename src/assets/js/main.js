@@ -23,18 +23,73 @@ $(window).on("load", function () {
         $(".modal-overlay").removeClass("modal-overlay--active")
         $(".modal").removeClass("modal--active")
     }
+    function ajaxRequest(ajaxForm, url) {
+        try {
+            history.replaceState(null, null, "#")
+        } catch (z) {
+            console.log(z)
+        }
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "html",
+            data: $("#" + ajaxForm).serialize(), // Сеарилизуем объект
+            success: function (response) {
+                //Данные отправлены успешно
+                let result = $.parseJSON(response)
+                console.log(result)
+            },
+            error: function (response) {
+                // Данные не отправлены
+                alert("Ошибка. Данные не отправлены.")
+            },
+        })
+    }
     //  /universal function
     // ----------------------------------------------
     // event
+
+    // Forms
+    // Фома регистрации/Входа
+    $("#modal-registration").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("modal-registration", "test.php")
+    })
+    // /Фома регистрации/Входа
+    // Форма Забыл пароль
+    $("#modal-recovery").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("modal-recovery", "test.php")
+    })
+    // /Форма Забыл пароль
+    // Форма Новый пароль
+    $("#modal-new-password").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("modal-new-password", "test.php")
+    })
+    // /Форма Новый пароль
+    // /Forms
+
     $(".menu__burger").on("click", () => {
         $(".placeholder-picture").toggleClass("placeholder-picture--hidden")
         $(".menu").toggleClass("menu--open")
         $("body").toggleClass("block")
     })
+    $('.head__button').on('click', callRegistrationModal)
+    $('.header__button').on('click', callRegistrationModal)
+    $('button.modal-sign__link').on('click', function (e) {
+        console.log()
+        e.preventDefault();
+        $('.modal--active').removeClass('modal--active')
+        $(`.modal-sign--${$(this).data('type-sign')}`).toggleClass('modal--active')
+    })
+    $('.modal-sign__type').on('click', function () {
+        switchRegistrationBody($(this).data('type'))
+    })
     $(".concept__button").on("click", (e) => {
         scrollEmulation();
         $(".modal-overlay").toggleClass(`modal-overlay--active`);
-        $(`.modal`).toggleClass(`modal--active`)
+        $(`.modal__concept`).toggleClass(`modal--active`)
     })
     $(".modal__close").on("click", closeModal)
     $(".modal-overlay").on("click", (e) => {
@@ -71,6 +126,7 @@ $(window).on("load", function () {
             .toggleClass("program__card-note--active")
     }
     function toggleModalInfoAvatar() {
+        $(this).parents('.program__card').find('.program__card-close').toggleClass('program__card-close--open')
         $(this)
             .parents(".program__card")
             .find(".program__card-modal-avatar-img")
@@ -90,6 +146,18 @@ $(window).on("load", function () {
         $(this)
             .find(".program__card-img")
             .toggleClass("program__card-img--hidden")
+    }
+    function callRegistrationModal() {
+        scrollEmulation();
+        $(".modal-overlay").toggleClass(`modal-overlay--active`);
+        $(`.modal-sign--registration`).toggleClass(`modal--active`)
+        switchRegistrationBody($(this).data('type-sign'))
+    }
+    function switchRegistrationBody(type) {
+        $(`.modal-sign--registration .modal-sign__body`).removeClass('modal-sign__body--active')
+        $(`.modal-sign--registration .modal-sign__type`).removeClass('modal-sign__type--active')
+        $(`.modal-sign--registration .modal-sign__body--${type}`).addClass('modal-sign__body--active')
+        $(`.modal-sign--registration .modal-sign__type[data-type="${type}"]`).addClass('modal-sign__type--active')
     }
     // /unique function
     // ----------------------------------------------
